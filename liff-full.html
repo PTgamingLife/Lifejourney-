@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>生命之旅</title>
+<link rel="stylesheet" href="style.css" />
+<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script><script>window.liff?.init({liffId:"2011511140-GLb2hycv"}).catch(()=>{});</script></head>
+<body>
+<header>
+  <h1>生命之旅</h1>
+</header>
+<nav class="grid-container">
+  <button id="btn-add" class="grid-item">增加我的生命之旅</button>
+  <button id="btn-mine" class="grid-item">我的生命之旅</button>
+  <button id="btn-others" class="grid-item">看看別人的生命之旅</button>
+  <button id="btn-add-to-others" class="grid-item">為別人的生命增加風景</button>
+</nav>
+<main>
+  <section id="section-add" class="hidden">
+    <h2>增加我的生命之旅</h2>
+    <form id="add-form">
+      <p>請回答以下三個問題：</p>
+      <label>問題1：<input type="text" name="q1" required></label><br />
+      <label>問題2：<input type="text" name="q2" required></label><br />
+      <label>問題3：<input type="text" name="q3" required></label><br />
+      <label>上傳一張照片：<input type="file" name="photo" accept="image/*" required></label><br />
+      <button type="submit">送出</button>
+    </form>
+    <div id="add-result"></div>
+  </section>
+
+  <section id="section-mine" class="hidden">
+    <h2>我的生命之旅</h2>
+    <div id="mine-journey" class="journey"></div>
+  </section>
+
+  <section id="section-others" class="hidden">
+    <h2>看看別人的生命之旅</h2>
+    <label>輸入別人編號：<input type="text" id="others-id" placeholder="輸入編號" /></label>
+    <button id="btn-view-others">查看</button>
+    <div id="others-journey" class="journey"></div>
+  </section>
+
+  <section id="section-add-to-others" class="hidden">
+    <h2>為別人的生命增加風景</h2>
+    <form id="add-to-others-form">
+      <label>輸入別人編號：<input type="text" name="targetId" required></label><br />
+      <label>上傳一張照片：<input type="file" name="photo" accept="image/*" required></label><br />
+      <label>關於這張照片的回憶或描述：<textarea name="description" rows="3" required></textarea></label><br />
+      <button type="submit">送出</button>
+    </form>
+    <div id="add-to-others-result"></div>
+  </section>
+</main>
+<footer>
+  <p>© 生命之旅</p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>

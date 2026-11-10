@@ -1,0 +1,31 @@
+name: Publish Aprico site
+on:
+  push:
+    branches: [aprico-3745cb07abcd4c708b2b1626adfa14b1]
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: aprico-pages
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: github-pages
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Prepare reviewed static files
+        run: |
+          mkdir published
+          cp index.html .nojekyll aprico-release.json published/
+          for file in style.css app.js liff-tall.html liff-full.html; do
+            if [ -f "$file" ]; then cp "$file" published/; fi
+          done
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: published
+      - uses: actions/deploy-pages@v4
